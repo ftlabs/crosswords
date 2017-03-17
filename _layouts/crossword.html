@@ -3,7 +3,7 @@ layout: default
 ---
 <h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
 <div style="width: 100%;" id="main-container">
-	<div class="o-crossword" data-o-component="o-crossword" data-o-crossword-data="https://cdn.rawgit.com/ftlabs/o-crossword/001d79ac8f4146c244e64760f60a42c788e12ddc/demos/examples/crossword_ft_daily_2016_03_03_15179_ADA_REFORMAT.json">
+	<div class="o-crossword" data-o-component="o-crossword" data-o-crossword-data="{{ content | remove: '<p>' | remove: '</p>' | escape }}">
 		<table class="o-crossword-table"></table>
     <ul class="o-crossword-clues"></ul>
 	</div>
