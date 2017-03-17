@@ -2,4 +2,4 @@
 
 To see if Jekyll is suitable...
 
-... //ftlabs.github.io/crossword-minisite/
+... [live pages](//ftlabs.github.io/crossword-minisite/)
