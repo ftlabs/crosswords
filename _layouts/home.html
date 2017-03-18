@@ -4,18 +4,25 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Crosswords</h1>
 
+  <p>
+    This is an experiment to look into how we might make our crosswords less paper-y.
+  </p>
+  <p>
+    There are lots of rough edges, broken bits, and "oh dear, we forgot"s,
+    but hopefully there is enough here of interest to encourage you to spend some time,
+    have a play, and then send us some feedback!
+  </p>
+  <p>
+    N.B. we are particularly keen to hear how these crosswords behave on smartphones.
+  </p>
   {{ content }}
 
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
+        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%b %-d, %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
       </li>
     {% endfor %}
   </ul>

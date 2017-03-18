@@ -25,6 +25,7 @@ twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
+o_crossword_version: 0.4.2
 markdown: kramdown
 theme: minima
 gems:
