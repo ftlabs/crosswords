@@ -1,11 +1,32 @@
 ---
 layout: default
 ---
+<!--
+  o-crossword needs the following specified in the default wrapper
+  <head>
+  ...
+    <link rel="stylesheet" href="//origami-build.ft.com/v2/bundles/css?modules=o-crossword%40{{ site.o_crossword_version }}%3A%2Fdemos%2Fsrc%2Fdemo.scss">
+  ...
+  </head>
+
+  and
+
+  <body>
+    ...
+    <script src="//origami-build.ft.com/v2/bundles/js?modules=o-crossword%40{{ site.o_crossword_version }}%3A%2Fdemos%2Fsrc%2Fdemo.js"></script>
+  </body>
+
+  (as specified in BASIC HTML in http://registry.origami.ft.com/components/o-crossword@0.4.4)
+
+  If there are > 1 o-crossword instances on the page, it might take an extra code effort to invoke them.
+
+  The value of the attribute, data-o-crossword-data, can be either the plain text spec of a crossword or a url to a file of that.
+-->
+
 <h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
-<div style="width: 100%;" id="main-container">
+<div style="width: 100%;">
 	<div class="o-crossword" data-o-component="o-crossword" data-o-crossword-data="{{ content | remove: '<p>' | remove: '</p>' | escape }}">
 		<table class="o-crossword-table"></table>
     <ul class="o-crossword-clues"></ul>
 	</div>
 </div>
-<script src="//origami-build.ft.com/v2/bundles/js?modules=o-crossword%40{{ site.o_crossword_version }}%3A%2Fdemos%2Fsrc%2Fdemo.js"></script>
