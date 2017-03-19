@@ -4,12 +4,14 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+This is an experiment to look into how we might make our <a href="{{ site.original_crosswords_site_url }}">long-suffering crosswords</a> less paper-y.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+There are lots of rough edges, broken bits, and "oh dear, we forgot"s, but hopefully there is enough here of interest to encourage you to spend some time, have a play, and then send us some feedback!
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+N.B. we are particularly keen to hear how these crosswords behave on smartphones.
+
+## Known Problems (which we will be working on)
+
+* any answers entered are instantly forgotten after even a page refresh
+* the keyboard on Android smartphones is broken
+* and many, many more
