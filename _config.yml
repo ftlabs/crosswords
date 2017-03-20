@@ -30,7 +30,7 @@ original_crosswords_site_url: http://www.ft.com/life-arts/crossword
 google_analytics: UA-72191230-3
 
 # Build settings
-o_crossword_version: 0.4.5
+o_crossword_version: "@^0.4.5"
 markdown: kramdown
 theme: minima
 gems:
