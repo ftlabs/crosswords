@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<!--
+-->
+
+<h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
+<h2>{{ page.date | date_to_long_string }}</h2>
+
+<object data="{{ page.pdf }}" width="100%" height="550px" type='application/pdf'>
+<p>Sorry, the PDF Crossword could not be displayed :(</p>
+</object>
+
+<p>
+and here is a <a href="{{ page.pdf }}">link to the PDF file
+</p>
