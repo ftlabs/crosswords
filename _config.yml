@@ -39,3 +39,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+
+defaults:
+  -
+    scope:
+      path: "" # all files
+    values:
+      layout: "crossword"
