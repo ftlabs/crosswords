@@ -24,6 +24,13 @@ layout: default
 -->
 
 <h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
+<h2>{{ page.date | date: "%a, %d %B %Y" }}</h2>
+{% if page.winners %}
+<p>
+	Won by {{ page.winners | join: '; ' }}.
+</p>
+{% endif %}
+
 <div style="width: 100%;">
 	<div class="o-crossword" data-o-component="o-crossword" data-o-crossword-data="{{ content | remove: '<p>' | remove: '</p>' | escape }}">
 		<table class="o-crossword-table"></table>
