@@ -16,6 +16,12 @@ layout: default
 
 <h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
 <h2>{{ page.date | date_to_long_string }}</h2>
+{% if page.winners %}
+<p>
+	Won by {{ page.winners | join: '; ' }}.
+</p>
+{% endif %}
+
 
 <object data="{{ pdf_url }}" width="{{ width }}" height="{{ height }}" type='application/pdf'>
 <p>Sorry, the PDF Crossword could not be displayed :(</p>

@@ -23,6 +23,9 @@ layout: default
     {% for post in site.posts %}
       <li>
         <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%b %d, %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        {% if post.winners %}
+          - won by {{ post.winners | join: '; ' }}.
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
