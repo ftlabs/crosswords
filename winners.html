@@ -21,31 +21,35 @@ layout: default
 
   <h2>listed by winner</h2>
 
+<!--
+  Nicely inefficient way to create list of crosswords won by each winner.
+  Because not much ability to create and manipulate hashes in Liquid,
+  have to do multiple scans of the posts:
+  - loop over all posts to construct a list of all winners
+  - calc the list of uniq winners (sorted by first initial)
+  - for each winner, loop over all posts, looking for the one(s) they won: o(n^2) FTW !
+-->
 
-<!-- nicely inefficient way to create list of crosswords won by each winner-->
+{% assign winners_list = "" | split:"," %}
+{% for post in site.posts %}
+  {% if post.winners %}
+    {% for winner in post.winners %}
+      {% assign winners_list = winners_list | push: winner %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
 
-{% capture winners_string %}
-  {% for post in site.posts %}
-    {% if post.winners %}
-      {% for winner in post.winners %};{{ winner }}{% endfor %}
-    {% endif %}
-  {% endfor %}
-{% endcapture %}
+{% assign winners_uniq = winners_list | sort | uniq  %}
 
-{% assign winners_string = winners_string | lstrip | rstrip | remove_first: ';' %}
-
-{% assign winners_sorted = winners_string | split: ';' | sort | uniq  %}
-
-{% for winner in winners_sorted %}
-  {% assign winner_stripped = winner | rstrip %}
-  <h3>{{ winner_stripped }}</h3>
+{% for winner in winners_uniq %}
+  <h3>{{ winner }}</h3>
   <ul>
     {% for post in site.posts %}
       {% if post.winners %}
         {% for post_winner in post.winners %}
-          {% if post_winner contains winner_stripped %}
+          {% if post_winner contains winner %}
             <li>
-              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+              <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
             </li>
           {% endif %}
         {% endfor %}
