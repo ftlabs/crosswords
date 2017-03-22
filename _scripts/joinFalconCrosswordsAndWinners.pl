@@ -14,8 +14,8 @@ my $months = {
 # March 15 2017: Puzzle 15,498
 
 foreach my $line (`cat crosswords.txt`){
-  if ( $line =~ /(http:.*pdf)/ ) {
-    $pdf = $1;
+  if ( $line =~ /a href=\"http(:[^\"]+)\"/ ) {
+    $pdf = 'https'.$1;
   } elsif( $line =~ /(\w+) (\d+) (\d+): (\w+)(?: no\.)? ([\d,]+)/ ) {
     my $monthName = $1;
     my $day   = $2;
@@ -78,7 +78,7 @@ my @cIds = sort(keys(%$cws));
 # - I Roberts, London, SW18
 # ---
 
-foreach my $id (@cIds[1,2,3]){
+foreach my $id (@cIds){
   my $cStruct = $cws->{ $id };
   my @lines = (
     '---',
