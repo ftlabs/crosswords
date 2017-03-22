@@ -29,11 +29,16 @@ foreach my $line (`cat crosswords.txt`){
 
     my $month  = $months->{$monthName};
     my $id = "$name $num";
+    my $date = sprintf("%4d-%02d-%02d", $year, $month, $day);
+    my $numNoCommas = $num;
+    $numNoCommas =~ s/,//g;
+    my $filename = "${date}-${name}-${numNoCommas}.html";
 
     my $cStruct = {
-      'id'   => $id,
-      'date' => $year.'-'.$month.'-'.$day,
-      'pdf'  => $pdf
+      'id'       => $id,
+      'date'     => $date,
+      'pdf'      => $pdf,
+      'filename' => $filename
     };
 
     $cws->{ $cStruct->{'id'} } = $cStruct;
@@ -61,7 +66,7 @@ foreach my $line (`cat winners.txt`){
   }
 }
 
-my @cIds = keys(%$cws);
+my @cIds = sort(keys(%$cws));
 
 # ---
 # layout: crossword-pdf
@@ -73,7 +78,7 @@ my @cIds = keys(%$cws);
 # - I Roberts, London, SW18
 # ---
 
-foreach my $id (@cIds){
+foreach my $id (@cIds[1,2,3]){
   my $cStruct = $cws->{ $id };
   my @lines = (
     '---',
@@ -90,5 +95,18 @@ foreach my $id (@cIds){
   }
 
   push @lines, '---';
-  print join("\n", @lines), "\n";
+  my $filename = '../_posts/'.$cStruct->{'filename'};
+  print "creating file=$filename\n";
+
+  # Try to create the output file
+  # (open it for writing)
+  unless(open OUTPUT, '>'.$filename) {
+      die "\nUnable to create '$filename'\n";
+  }
+
+  foreach my $line (@lines){
+    print OUTPUT "$line\n";
+  }
+
+  close OUTPUT;
 }

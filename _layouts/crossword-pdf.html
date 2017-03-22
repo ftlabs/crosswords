@@ -17,7 +17,10 @@ layout: default
 
 {% assign pdf_url = page.pdf | replace_first: "http:", "https:" %}
 
-<h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }} by {{ page.author | escape }}</h1>
+<h1 class="post-title" itemprop="name headline">{{ page.crossword-id | escape }}
+{% if page.author %}
+by {{ page.author | escape }}
+{% endif %}</h1>
 <h2>{{ page.date | date: "%a, %d %B %Y" }}</h2>
 {% if page.winners %}
 <p>
