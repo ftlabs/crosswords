@@ -19,6 +19,39 @@ layout: default
     {% endfor %}
   </ul>
 
+  <h2>listed by winner</h2>
 
+
+<!-- nicely inefficient way to create list of crosswords won by each winner-->
+
+{% capture winners_string %}
+  {% for post in site.posts %}
+    {% if post.winners %}
+      {% for winner in post.winners %};{{ winner }}{% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% assign winners_string = winners_string | lstrip | rstrip | remove_first: ';' %}
+
+{% assign winners_sorted = winners_string | split: ';' | sort | uniq  %}
+
+{% for winner in winners_sorted %}
+  {% assign winner_stripped = winner | rstrip %}
+  <h3>{{ winner_stripped }}</h3>
+  <ul>
+    {% for post in site.posts %}
+      {% if post.winners %}
+        {% for post_winner in post.winners %}
+          {% if post_winner contains winner_stripped %}
+            <li>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
 
 </div>
