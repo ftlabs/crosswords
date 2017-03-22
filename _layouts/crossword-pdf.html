@@ -4,7 +4,10 @@ layout: default
 <!--
 -->
 
-{% if page.crossword-id contains "Polymath" %}
+{% if page.height %}
+	{% assign width  = "100%"  %}
+	{% assign height = page.height %}
+{% elsif page.crossword-id contains "Polymath" %}
 	{% assign width  = "100%"  %}
 	{% assign height = "750px" %}
 {% else %}

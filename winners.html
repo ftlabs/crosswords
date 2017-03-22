@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Prize Crossword Winners</h1>
+
+<h2>listed by date</h2>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.winners %}
+        <li>
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          - won by {{ post.winners | join: '; ' }}.
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+
+
+</div>

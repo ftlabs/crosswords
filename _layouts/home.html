@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Crosswords</h1>
+  <h1 class="page-heading">Financial Times Crosswords</h1>
 
   <p>
     This is an experiment to look into how we might make our <a href="{{ site.original_crosswords_site_url }}">long-suffering crosswords</a> less paper-y.
@@ -19,6 +19,8 @@ layout: default
   </p>
   {{ content }}
 
+ <h2>A sampling of crosswords</h2>
+
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
@@ -31,6 +33,8 @@ layout: default
   </ul>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+  <p>Just the <a href="winners.html">winners</a></p>
 
   <h2>Known Problems (which we will be working on)</h2>
 
