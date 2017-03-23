@@ -13,7 +13,7 @@ layout: default
       {% if post.winners %}
         <li>
           <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-          - won by {{ post.winners | join: '; ' }}.
+          <br> - won by {{ post.winners | join: '; ' }}.
         </li>
       {% endif %}
     {% endfor %}

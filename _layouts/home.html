@@ -29,7 +29,7 @@ layout: default
         (pdf)
         {% endif %}
         {% if post.winners %}
-          - won by {{ post.winners | join: '; ' }}.
+          <br> - won by {{ post.winners | join: '; ' }}.
         {% endif %}
       </li>
     {% endfor %}
