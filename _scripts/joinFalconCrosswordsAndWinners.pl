@@ -58,6 +58,7 @@ foreach my $line (`cat winners.txt`){
 
     if (exists $cws->{$id} ) {
       my $cStruct = $cws->{ $id };
+      $winners =~ s/&amp;/&/g;
       $cStruct->{'winners'} = [ split(/;/, $winners ) ];
       print "found matching crossword for id=$id\n";
     } else {
