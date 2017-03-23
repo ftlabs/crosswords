@@ -21,8 +21,8 @@ email: ftlabs@ft.com
 description: > # this means to ignore newlines until "baseurl:"
   This is an experiment to look into how we might make our
   long-suffering paper-y crossword offering a little more online and uptodate.
-baseurl: "/crossword-minisite" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://crosswords.ft.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ftlabs
 github_username:  railsagainstignorance
 original_crosswords_site_url: http://www.ft.com/life-arts/crossword
