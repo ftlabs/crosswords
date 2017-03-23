@@ -24,7 +24,7 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | remove_first: '/crossword-minisite' }}">{{ post.title | escape }}</a>
+        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | remove_first: site.path_prefix_to_strip }}">{{ post.title | escape }}</a>
         {% if post.layout == 'crossword-pdf' %}
         (pdf)
         {% endif %}
@@ -35,7 +35,7 @@ layout: default
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" }}">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="feed.xml">via RSS</a></p>
 
   <p>Just the <a href="winners.html">winners</a></p>
 
