@@ -25,6 +25,9 @@ layout: default
     {% for post in site.posts %}
       <li>
         <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        {% if post.layout == 'crossword-pdf' %}
+        (pdf)
+        {% endif %}
         {% if post.winners %}
           - won by {{ post.winners | join: '; ' }}.
         {% endif %}
