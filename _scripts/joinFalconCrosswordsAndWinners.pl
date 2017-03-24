@@ -14,8 +14,15 @@ my $months = {
 # March 15 2017: Puzzle 15,498
 
 foreach my $line (`cat crosswords.txt`){
-  if ( $line =~ /a href=\"http(:[^\"]+)\"/ ) {
-    $pdf = 'https'.$1;
+  if( $line =~ /a href=\"(http:[^\"]+)"/ ) {
+    my $pdf = $1;
+    if ( $pdf =~ /^http:[^\"]+([0-9a-f\-]+)/ ) {
+      my $uuid = $1;
+      # https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:3d995a9e-06cd-11e7-97d1-5e720a26771b?source=chrisg
+      my $pdfImg  = "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:${uuid}?source=crosswordsftcom";
+    } else {
+      die "ERROR: could not parse pdf url to obtain the uuid: $pdf";
+    }
   } elsif( $line =~ /(\w+) (\d+) (\d+): (\w+)(?: no\.)? ([\d,]+)/ ) {
     my $monthName = $1;
     my $day   = $2;
@@ -38,6 +45,8 @@ foreach my $line (`cat crosswords.txt`){
       'id'       => $id,
       'date'     => $date,
       'pdf'      => $pdf,
+      'uuid'     => $uuid,
+      '$pdfImg'  => $pdfImg,
       'filename' => $filename
     };
 
@@ -85,7 +94,9 @@ foreach my $id (@cIds){
     '---',
     'layout: crossword-pdf',
     'crossword-id: ' . $id,
-    'pdf: ' . $cStruct->{'pdf'}
+    'pdf: ' . $cStruct->{'pdf'},
+    'uuid:' . $cStruct->{'pdf'},
+    'pdf-as-img' . $cStruct->{'$pdfImg'}
   );
 
   if ( exists $cStruct->{'winners'} ) {
