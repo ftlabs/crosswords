@@ -13,13 +13,20 @@ my $months = {
 # <a href="http://im.ft-static.com/content/images/7aa9517c-0025-11e7-96f8-3700c5664d30.pdf" >
 # March 15 2017: Puzzle 15,498
 
+my $cStruct;
+
 foreach my $line (`cat crosswords.txt`){
-  if( $line =~ /a href=\"(http:[^\"]+)"/ ) {
+  # <a href="http://im.ft-static.com/content/images/7aa9517c-0025-11e7-96f8-3700c5664d30.pdf" >
+  if( $line =~ /a href="(http:[^"]+)"/ ) {
     my $pdf = $1;
-    if ( $pdf =~ /^http:[^\"]+([0-9a-f\-]+)/ ) {
+    if ( $pdf =~ /^http:.+\/([0-9a-f\-]+)/ ) {
       my $uuid = $1;
       # https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:3d995a9e-06cd-11e7-97d1-5e720a26771b?source=chrisg
-      my $pdfImg  = "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:${uuid}?source=crosswordsftcom";
+      $cStruct = {
+        'pdf'      => $pdf,
+        'uuid'     => $uuid,
+        'pdfImg'   => "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:${uuid}?source=crosswordsftcom",
+      }
     } else {
       die "ERROR: could not parse pdf url to obtain the uuid: $pdf";
     }
@@ -41,14 +48,9 @@ foreach my $line (`cat crosswords.txt`){
     $numNoCommas =~ s/,//g;
     my $filename = "${date}-${name}-${numNoCommas}.html";
 
-    my $cStruct = {
-      'id'       => $id,
-      'date'     => $date,
-      'pdf'      => $pdf,
-      'uuid'     => $uuid,
-      '$pdfImg'  => $pdfImg,
-      'filename' => $filename
-    };
+    $cStruct->{'id'} = $id;
+    $cStruct->{'date'} = $date;
+    $cStruct->{'filename'} = $filename;
 
     $cws->{ $cStruct->{'id'} } = $cStruct;
     print "added id=".$cStruct->{'id'}."\n";
@@ -92,11 +94,11 @@ foreach my $id (@cIds){
   my $cStruct = $cws->{ $id };
   my @lines = (
     '---',
-    'layout: crossword-pdf',
+          'layout: crossword-pdf',
     'crossword-id: ' . $id,
-    'pdf: ' . $cStruct->{'pdf'},
-    'uuid:' . $cStruct->{'pdf'},
-    'pdf-as-img' . $cStruct->{'$pdfImg'}
+             'pdf: ' . $cStruct->{'pdf'},
+            'uuid: ' . $cStruct->{'uuid'},
+      'pdf-as-img: ' . $cStruct->{'pdfImg'}
   );
 
   if ( exists $cStruct->{'winners'} ) {
