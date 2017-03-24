@@ -41,7 +41,7 @@ exclude:
   - README.md
   - _scripts
 
-path_prefix_to_strip: /crossword-minisite
+path_prefix_to_strip: /crossword-minisite # this is used to hack the auto-generated post.url values so that this works with Fastly+GitHub Page project+Jekyll
 
 defaults:
   -
