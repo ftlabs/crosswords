@@ -1,4 +1,10 @@
 #!/usr/bin/perl
+
+# run with no args in _scripts dir, where the dir contains
+# - winners.txt (scraped from old page, http://www.ft.com/cms/s/2/48e09c20-fbc7-11e1-87ae-00144feabdc0.html?ft_site=falcon&desktop=true#axzz4cFDHYjuW)
+# - crosswords.txt (scraped from http://www.ft.com/life-arts/crossword?ft_site=falcon&desktop=true)
+# Will generate (or update) the _posts/* files containing the front matter for each crossword.
+
 use strict;
 
 my $cws = {};
@@ -9,9 +15,6 @@ my $months = {
   'February' => 2,
   'January'  => 1
 };
-
-# <a href="http://im.ft-static.com/content/images/7aa9517c-0025-11e7-96f8-3700c5664d30.pdf" >
-# March 15 2017: Puzzle 15,498
 
 my $cStruct;
 
@@ -30,6 +33,7 @@ foreach my $line (`cat crosswords.txt`){
     } else {
       die "ERROR: could not parse pdf url to obtain the uuid: $pdf";
     }
+  # March 15 2017: Puzzle 15,498
   } elsif( $line =~ /(\w+) (\d+) (\d+): (\w+)(?: no\.)? ([\d,]+)/ ) {
     my $monthName = $1;
     my $day   = $2;
