@@ -89,6 +89,8 @@ my @cIds = sort(keys(%$cws));
 # crossword-id: Polymath 907
 # author: Gozo
 # pdf: https://im.ft-static.com/content/images/8e5ae332-fcf8-11e6-96f8-3700c5664d30.pdf
+# uuid: 123-123-123-123
+# pdf-as-img: https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:8e5ae332-fcf8-11e6-96f8-3700c5664d30?source=crosswordsftcom
 # height: 800px
 # winners:
 # - I Roberts, London, SW18
