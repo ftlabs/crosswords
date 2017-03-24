@@ -14,3 +14,14 @@ To see if Jekyll is suitable...
 * how to make the crossword posts 100% front matter?
 * some kind of commit hook to validate crossword posts before adding to the repo?
 * ...
+
+## setting up Jekyll locally (on a Mac, also works on Windows)
+
+via https://jekyllrb.com/
+
+* have or install ruby (this was developed using version ruby 2.0.0p648)
+* `$ sudo gem install jekyll bundler`
+* clone this repo
+* cd to this repo
+* `$ bundle exec jekyll serve`
+* browse to http://localhost:4000
