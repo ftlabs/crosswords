@@ -12,7 +12,7 @@ layout: default
     {% for post in site.posts %}
       {% if post.winners %}
         <li>
-          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | remove_first: site.path_prefix_to_strip }}">{{ post.title | escape }}</a>
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url }}">{{ post.title | escape }}</a>
           <br> - won by {{ post.winners | join: '; ' }}.
         </li>
       {% endif %}
@@ -51,7 +51,7 @@ layout: default
         {% assign winner_with_semicolon = winner | append: ';' %}
           {% if post_winner_with_semicolon contains winner_with_semicolon %}
             <li>
-              <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | remove_first: site.path_prefix_to_strip }}">{{ post.title | escape }}</a>
+              <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url }}">{{ post.title | escape }}</a>
             </li>
           {% endif %}
         {% endfor %}
