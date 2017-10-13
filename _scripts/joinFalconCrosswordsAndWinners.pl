@@ -1,12 +1,11 @@
 #!/usr/bin/perl
 
-# run with no args in _scripts dir, where the dir contains
-# - winners.txt (scraped from old page, https://www.ft.com/content/a5c6b91c-1ae2-11e7-9519-a200b6e21c5a)
-# - crosswords.txt (scraped from https://www.ft.com/crossword)
+# Run with no args in _scripts dir.
 # Will generate (or update) the _posts/* files containing the front matter for each crossword.
 
 use strict;
 
+# pull latest content from live site
 my $source_crosswords_url = "https://www.ft.com/crossword";
 my $crossword_html = `wget -O- $source_crosswords_url | grep "Latest Puzzles"`;
 my @crossword_lines = split(/<li>/, $crossword_html);
@@ -80,7 +79,7 @@ foreach my $line (@crossword_lines) {
 
 # <p><strong>Crossword 15,490</strong>: J Mills, Grappenhall, Cheshire</p>
 
-foreach my $line (`cat winners.txt`){
+foreach my $line (@winners_lines){
   if ( $line =~ /<strong>(\w+) ([\d,]+)<\/strong>: (.+)/ ) {
     my $name    = $1;
     my $num     = $2;
