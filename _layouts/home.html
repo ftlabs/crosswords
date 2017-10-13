@@ -4,13 +4,15 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Financial Times Crosswords</h1>
+  <h1 class="page-heading">Financial Times Crosswords (Experiment)</h1>
 
   <p>
-    This is an experiment to look into how we might make our <a href="{{ site.original_crosswords_site_url }}">long-suffering crosswords</a> less paper-y.
+    Welcome to our new, experimental crosswords, which can be filled in on-line.
+    We are keen to move on from the <a href="{{ site.original_crosswords_site_url }}">old-style, static crosswords</a>,
+    and have high hopes that this new on-line format brings a new (and welcome) possibility to the world of crosswords.
   </p>
   <p>
-    There are lots of rough edges, broken bits, and "oh dear, we forgot"s,
+    There are, no doubt, some rough edges, broken bits, and "oh dear, we forgot"s,
     but hopefully there is enough here of interest to encourage you to spend some time,
     have a play, and then send us some feedback!
   </p>
@@ -19,32 +21,40 @@ layout: default
   </p>
   {{ content }}
 
- <h2>A sampling of crosswords</h2>
+  <h2>Some new, experimental, dynamic crosswords</h2>
 
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
-        {% if post.layout == 'crossword-pdf' %}
-        (pdf)
-        {% endif %}
-        {% if post.winners %}
-          <br> - won by {{ post.winners | join: '; ' }}.
-        {% endif %}
-      </li>
+      {% if post.layout != 'crossword-pdf' %}
+        <li>
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+        </li>
+      {% endif %}
     {% endfor %}
+  </ul>
+
+ <h2>A sampling of old-style, static crosswords</h2>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.layout == 'crossword-pdf' %}
+        <li>
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+          (pdf)
+          {% if post.winners %}
+            <br> - won by {{ post.winners | join: '; ' }}.
+          {% endif %}
+        </li>
+    {% endif %}
+  {% endfor %}
   </ul>
 
   <p class="rss-subscribe">subscribe <a href="feed.xml">via RSS</a></p>
 
   <p>Just the <a href="winners.html">winners</a></p>
 
-  <h2>Known Problems (which we will be working on)</h2>
+  <h2>Please do let us know your thoughts about the new crosswords</h2>
 
-  <ul>
-    <li>any answers entered are instantly forgotten after even a page refresh</li>
-    <li>the keyboard on Android smartphones is broken</li>
-    <li>and many, many more</li>
-  </ul>
+  <p>...and here is how.</p>
 
 </div>
