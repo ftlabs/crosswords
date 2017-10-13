@@ -9,10 +9,15 @@ use strict;
 my $source_crosswords_url = "https://www.ft.com/crossword";
 my $crossword_html = `wget -O- $source_crosswords_url | grep "Latest Puzzles"`;
 my @crossword_lines = split(/<li>/, $crossword_html);
+die "ERROR: no crossword_lines" if scalar(@crossword_lines) == 0;
 
 my $source_winners_url = "https://www.ft.com/content/a5c6b91c-1ae2-11e7-9519-a200b6e21c5a";
 my $winners_html = `wget -O- $source_winners_url | grep "<p><strong>"`;
 my @winners_lines = split(/<\/p>/, $winners_html);
+die "ERROR: no winners_lines" if scalar(@winners_lines) == 0;
+
+print "INFO: num crossword_lines = ", scalar(@crossword_lines), "\n";
+print "INFO: num winners_lines = ", scalar(@winners_lines), "\n";
 
 my $cws = {};
 my $pdf;
@@ -35,9 +40,16 @@ my $months = {
 my $cStruct;
 
 foreach my $line (@crossword_lines) {
-  # <a href="http://im.ft-static.com/content/images/7aa9517c-0025-11e7-96f8-3700c5664d30.pdf" >
-  if( $line =~ /a href="(http:[^"]+)"/ ) {
+  # print "INFO: crossword line = ${line}\n";
+  # <a href="http://im.ft-static.com/content/images/f91627b6-10aa-11e7-a88c-50ba212dce4d.pdf" data-trackable="link" target="_blank">April 1 2017: Puzzle 15,513</a></li></ul>
+  if( $line =~ /a href="(http:[^"]+)".*>(\w+) (\d+) (\d+): (\w+)(?: [nN]o\.)? ([\d,]+)</ ) {
     my $pdf = $1;
+    my $monthName = $2;
+    my $day   = $3;
+    my $year  = $4;
+    my $name  = $5;
+    my $num   = $6;
+
     if ( $pdf =~ /^http:.+\/([0-9a-f\-]+)/ ) {
       my $uuid = $1;
       # https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:3d995a9e-06cd-11e7-97d1-5e720a26771b?source=chrisg
@@ -49,13 +61,6 @@ foreach my $line (@crossword_lines) {
     } else {
       die "ERROR: could not parse pdf url to obtain the uuid: $pdf";
     }
-  # March 15 2017: Puzzle 15,498
-  } elsif( $line =~ /(\w+) (\d+) (\d+): (\w+)(?: no\.)? ([\d,]+)/ ) {
-    my $monthName = $1;
-    my $day   = $2;
-    my $year  = $3;
-    my $name  = $4;
-    my $num   = $5;
 
     if ($name eq 'Puzzle') {
       $name = 'Crossword';
@@ -73,11 +78,20 @@ foreach my $line (@crossword_lines) {
     $cStruct->{'filename'} = $filename;
 
     $cws->{ $cStruct->{'id'} } = $cStruct;
-    print "added id=".$cStruct->{'id'}."\n";
+  } else {
+    print "DEBUG: unmatched crossword line=${line}\n";
   }
 }
 
+my @cIds = sort(keys(%$cws));
+print "INFO: num crosswords identified = ", scalar @cIds, ", ids=", join(",", @cIds), "\n";
+die "ERROR: no crosswords identified" if scalar( @cIds ) == 0;
+
 # <p><strong>Crossword 15,490</strong>: J Mills, Grappenhall, Cheshire</p>
+
+my $count_matched_winners = 0;
+my @unmatched_ids = ();
+my @matched_ids = ();
 
 foreach my $line (@winners_lines){
   if ( $line =~ /<strong>(\w+) ([\d,]+)<\/strong>: (.+)/ ) {
@@ -91,14 +105,18 @@ foreach my $line (@winners_lines){
       my $cStruct = $cws->{ $id };
       $winners =~ s/&amp;/&/g;
       $cStruct->{'winners'} = [ split(/;/, $winners ) ];
-      print "found matching crossword for id=$id\n";
+      push( @matched_ids, $id);
+      $count_matched_winners += 1;
     } else {
-      print "Error: no matching crossword for id=$id\n";
+      push( @unmatched_ids, $id );
     }
   }
 }
 
-my @cIds = sort(keys(%$cws));
+print "INFO: num matched_ids = ", scalar( @matched_ids ), ", ids=", join(",", @matched_ids), "\n";
+print "INFO: num unmatched_ids = ", scalar( @unmatched_ids ), ", ids=", join(",", @unmatched_ids), "\n";
+
+die "ERROR: no matched winners" if $count_matched_winners == 0;
 
 # ---
 # layout: crossword-pdf
