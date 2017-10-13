@@ -1,24 +1,41 @@
 #!/usr/bin/perl
 
 # run with no args in _scripts dir, where the dir contains
-# - winners.txt (scraped from old page, http://www.ft.com/cms/s/2/48e09c20-fbc7-11e1-87ae-00144feabdc0.html?ft_site=falcon&desktop=true#axzz4cFDHYjuW)
-# - crosswords.txt (scraped from http://www.ft.com/life-arts/crossword?ft_site=falcon&desktop=true)
+# - winners.txt (scraped from old page, https://www.ft.com/content/a5c6b91c-1ae2-11e7-9519-a200b6e21c5a)
+# - crosswords.txt (scraped from https://www.ft.com/crossword)
 # Will generate (or update) the _posts/* files containing the front matter for each crossword.
 
 use strict;
+
+my $source_crosswords_url = "https://www.ft.com/crossword";
+my $crossword_html = `wget -O- $source_crosswords_url | grep "Latest Puzzles"`;
+my @crossword_lines = split(/<li>/, $crossword_html);
+
+my $source_winners_url = "https://www.ft.com/content/a5c6b91c-1ae2-11e7-9519-a200b6e21c5a";
+my $winners_html = `wget -O- $source_winners_url | grep "<p><strong>"`;
+my @winners_lines = split(/<\/p>/, $winners_html);
 
 my $cws = {};
 my $pdf;
 
 my $months = {
-  'March'    => 3,
-  'February' => 2,
-  'January'  => 1
+  'December'  => 12,
+  'November'  => 11,
+  'October'   => 10,
+  'September' =>  9,
+  'August'    =>  8,
+  'July'      =>  7,
+  'June'      =>  6,
+  'May'       =>  5,
+  'April'     =>  4,
+  'March'     =>  3,
+  'February'  =>  2,
+  'January'   =>  1
 };
 
 my $cStruct;
 
-foreach my $line (`cat crosswords.txt`){
+foreach my $line (@crossword_lines) {
   # <a href="http://im.ft-static.com/content/images/7aa9517c-0025-11e7-96f8-3700c5664d30.pdf" >
   if( $line =~ /a href="(http:[^"]+)"/ ) {
     my $pdf = $1;
@@ -64,7 +81,7 @@ foreach my $line (`cat crosswords.txt`){
 # <p><strong>Crossword 15,490</strong>: J Mills, Grappenhall, Cheshire</p>
 
 foreach my $line (`cat winners.txt`){
-  if ( $line =~ /<strong>(\w+) ([\d,]+)<\/strong>: (.+)<\/p>/ ) {
+  if ( $line =~ /<strong>(\w+) ([\d,]+)<\/strong>: (.+)/ ) {
     my $name    = $1;
     my $num     = $2;
     my $winners = $3;
