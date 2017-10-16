@@ -25,9 +25,14 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
-      {% if post.layout != 'crossword-pdf' %}
+      {% if post.type == 'dynamic' %}
         <li>
-          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
+          &nbsp;&nbsp;&nbsp;
+          {% if post.source %}
+            <span class="source">({{ post.source }})</span>
+          {% endif %}
+          <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
         </li>
       {% endif %}
     {% endfor %}
@@ -37,21 +42,22 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
-      {% if post.layout == 'crossword-pdf' %}
+      {% if post.type == 'static' %}
         <li>
-          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>&nbsp;&nbsp;&nbsp;<a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
-          (pdf)
+          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
+          &nbsp;&nbsp;&nbsp;
+          <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
           {% if post.winners %}
-            <br> - won by {{ post.winners | join: '; ' }}.
+            <div class="winners"> - won by
+              <span class="winner">
+              {{ post.winners | join: ';</span> <span class="winner">' }}
+              </span>
+            </div>
           {% endif %}
         </li>
     {% endif %}
   {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="feed.xml">via RSS</a></p>
-
-  <p>Just the <a href="winners.html">winners</a></p>
 
   <h2>Please do let us know your thoughts about the new crosswords</h2>
 
