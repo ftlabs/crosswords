@@ -138,7 +138,9 @@ foreach my $id (@cIds){
     'crossword-id: ' . $id,
              'pdf: ' . $cStruct->{'pdf'},
             'uuid: ' . $cStruct->{'uuid'},
-      'pdf-as-img: ' . $cStruct->{'pdfImg'}
+      'pdf-as-img: ' . $cStruct->{'pdfImg'},
+            'type: ' . 'static',
+          'source: ' . 'FT.com',
   );
 
   if ( exists $cStruct->{'winners'} ) {
