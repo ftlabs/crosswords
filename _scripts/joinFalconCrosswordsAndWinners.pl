@@ -50,11 +50,11 @@ foreach my $line (@crossword_lines) {
     my $name  = $5;
     my $num   = $6;
 
-    if ( $pdf =~ /^http:/\/\(.+)\/([0-9a-f\-]+)/ ) {
+    if ( $pdf =~ /^http:\/\/(.+)\/([0-9a-f\-]+)/ ) {
       my $pdfdomain = $1;
       my $uuid = $2;
       my $pdfImg;
-      if ($pdfdomain === 'prod-upp-image-read.ft.com') {
+      if ($pdfdomain == 'prod-upp-image-read.ft.com') {
         # new: http://prod-upp-image-read.ft.com/5bb7800e-c06e-11e7-9836-b25f8adaa111
         # --> https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:5bb7800e-c06e-11e7-9836-b25f8adaa111?source=crosswordsftcom
 
