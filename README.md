@@ -4,6 +4,28 @@ To see if Jekyll is suitable...
 
 ... [live pages](//ftlabs.github.io/crossword-minisite/)
 
+## Update the crosswords from ft.com
+
+There is a script which scrapes ft.com/crossword for an uptodate list of live crosswords, and maps them into a form suitable to be displayed as part of this mini-site, converting the pdfs to images.
+
+Since the Jeykll site is static, once deployed to github, the only way to update that list of crosswords is to pull the latest version of the repo, run the script, checkin the changes, and push back up to github.
+
+In more detail:
+
+* $ git pull origin master
+* $ git checkout -b BRANCHNAME
+* $ cd \_scripts
+* $ ./joinFalconCrosswordsAndWinners.pl
+* check that you have some new \_post/ entries
+* $ cd -
+* check it works ok locally
+   * $ bundle exec jekyll serve
+   * view localhost:4000 in your browser
+* $ git add .
+* $ git commit -m "latest crosswords from ft.com, 14/11/2017"
+* $ git push origin BRANCHNAME
+* merge this branch into master
+
 ## Considering
 
 * how to keep in synch with changes in Origami?
