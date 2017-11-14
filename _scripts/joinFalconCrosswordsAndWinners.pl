@@ -37,12 +37,12 @@ my $months = {
   'January'   =>  1
 };
 
-my $cStruct;
 
 foreach my $line (@crossword_lines) {
   # print "INFO: crossword line = ${line}\n";
   # <a href="http://im.ft-static.com/content/images/f91627b6-10aa-11e7-a88c-50ba212dce4d.pdf" data-trackable="link" target="_blank">April 1 2017: Puzzle 15,513</a></li></ul>
   if( $line =~ /a href="(http:[^"]+)".*>(\w+) (\d+) (\d+): (\w+)(?: [nN]o\.)? ([\d,]+)</ ) {
+    my $cStruct;
     my $pdf = $1;
     my $monthName = $2;
     my $day   = $3;
@@ -50,13 +50,27 @@ foreach my $line (@crossword_lines) {
     my $name  = $5;
     my $num   = $6;
 
-    if ( $pdf =~ /^http:.+\/([0-9a-f\-]+)/ ) {
-      my $uuid = $1;
-      # https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:3d995a9e-06cd-11e7-97d1-5e720a26771b?source=chrisg
+    if ( $pdf =~ /^http:\/\/(.+)\/([0-9a-f\-]+)/ ) {
+      my $pdfdomain = $1;
+      my $uuid = $2;
+      my $pdfImg;
+      if ($pdfdomain eq 'prod-upp-image-read.ft.com') {
+        # new: http://prod-upp-image-read.ft.com/5bb7800e-c06e-11e7-9836-b25f8adaa111
+        # --> https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:5bb7800e-c06e-11e7-9836-b25f8adaa111?source=crosswordsftcom
+
+        $pdfImg = "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:${uuid}?source=crosswordsftcom";
+
+      } else {
+        # old: http://im.ft-static.com/content/images/2ee065ac-acbc-11e7-aab9-abaa44b1e130.pdf
+        # --> https://www.ft.com/__origami/service/image/v2/images/raw/http:im.ft-static.com/content/images/2ee065ac-acbc-11e7-aab9-abaa44b1e130.pdf?source=crosswordsftcom
+
+        $pdfImg = "https://www.ft.com/__origami/service/image/v2/images/raw/http:im.ft-static.com/content/images/${uuid}.pdf?source=crosswordsftcom";
+      }
+
       $cStruct = {
         'pdf'      => $pdf,
         'uuid'     => $uuid,
-        'pdfImg'   => "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms:${uuid}?source=crosswordsftcom",
+        'pdfImg'   => $pdfImg,
       }
     } else {
       die "ERROR: could not parse pdf url to obtain the uuid: $pdf";
