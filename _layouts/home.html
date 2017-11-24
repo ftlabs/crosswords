@@ -14,41 +14,39 @@ layout: default
   </p>
   {{ content }}
 
-  <h2>Dynamic crosswords</h2>
+  <h2>Dynamic Crosswords</h2>
 
   <ul class="post-list, dynamic">
     {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
 
     {% for post in dynamic-posts limit:9 %}
       <li>
-        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
-        &nbsp;&nbsp;&nbsp;
-        {% if post.source %}
-          <span class="source">({{ post.source }})</span>
-        {% endif %}
-        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
+          <span class="post-title">{{ post.title | escape }}</span>
+          <br>
+          <span class="post-author">{{ post.author | escape }}</span>
+          <br>
+          <span class="post-first-clue">{{ post.first-clue | escape }}</span>
+          <br>
+          <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
       </li>
     {% endfor %}
   </ul>
 
- <h2>A sampling of old-style, static crosswords</h2>
+ <h2>Recent Static Crosswords</h2>
 
   <ul class="post-list, non-dynamic">
     {% assign static-posts = site.posts | where: "type", 'static' %}
 
     {% for post in static-posts limit:12 %}
       <li>
-        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
-        &nbsp;&nbsp;&nbsp;
-        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
-        {% if post.winners %}
-          <div class="winners"> - won by
-            <span class="winner">
-            {{ post.winners | join: ';</span> <span class="winner">' }}
-            </span>
-          </div>
-        {% endif %}
+        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
+          <span class="post-title">{{ post.title | escape }}</span>
+          <br>
+          <span class="post-date" >{{ post.date | date: "%b %d, %Y" }}</span>
+        </a>
       </li>
-  {% endfor %}
+    {% endfor %}
   </ul>
 </div>
