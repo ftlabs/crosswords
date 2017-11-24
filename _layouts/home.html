@@ -4,63 +4,51 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Financial Times Crosswords (Experiment)</h1>
+  <h1 class="page-heading">Financial Times Crosswords</h1>
 
   <p>
     Welcome to our new, experimental crosswords, which can be filled in on-line.
-    We are keen to move on from the <a href="{{ site.original_crosswords_site_url }}">old-style, static crosswords</a>,
-    and have high hopes that this new on-line format brings a new (and welcome) possibility to the world of crosswords.
-  </p>
-  <p>
-    There are, no doubt, some rough edges, broken bits, and "oh dear, we forgot"s,
-    but hopefully there is enough here of interest to encourage you to spend some time,
-    have a play, and then send us some feedback!
   </p>
   <p>
     N.B. we are particularly keen to hear how these crosswords behave on smartphones.
   </p>
   {{ content }}
 
-  <h2>Some new, experimental, dynamic crosswords</h2>
+  <h2>Dynamic crosswords</h2>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.type == 'dynamic' %}
-        <li>
-          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
-          &nbsp;&nbsp;&nbsp;
-          {% if post.source %}
-            <span class="source">({{ post.source }})</span>
-          {% endif %}
-          <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
-        </li>
-      {% endif %}
+  <ul class="post-list, dynamic">
+    {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
+
+    {% for post in dynamic-posts limit:9 %}
+      <li>
+        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
+        &nbsp;&nbsp;&nbsp;
+        {% if post.source %}
+          <span class="source">({{ post.source }})</span>
+        {% endif %}
+        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+      </li>
     {% endfor %}
   </ul>
 
  <h2>A sampling of old-style, static crosswords</h2>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.type == 'static' %}
-        <li>
-          <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
-          &nbsp;&nbsp;&nbsp;
-          <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
-          {% if post.winners %}
-            <div class="winners"> - won by
-              <span class="winner">
-              {{ post.winners | join: ';</span> <span class="winner">' }}
-              </span>
-            </div>
-          {% endif %}
-        </li>
-    {% endif %}
+  <ul class="post-list, non-dynamic">
+    {% assign static-posts = site.posts | where: "type", 'static' %}
+
+    {% for post in static-posts limit:12 %}
+      <li>
+        <span class="post-meta" style="font-family: monospace;">{{ post.date | date: "%a, %d %b %Y" }}</span>
+        &nbsp;&nbsp;&nbsp;
+        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">{{ post.title | escape }}</a>
+        {% if post.winners %}
+          <div class="winners"> - won by
+            <span class="winner">
+            {{ post.winners | join: ';</span> <span class="winner">' }}
+            </span>
+          </div>
+        {% endif %}
+      </li>
   {% endfor %}
   </ul>
-
-  <h2>Please do let us know your thoughts about the new crosswords</h2>
-
-  <p>...and here is how.</p>
-
 </div>
