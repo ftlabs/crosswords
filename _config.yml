@@ -20,7 +20,7 @@ title: FT Labs Experimental Crosswords
 email: ftlabs@ft.com
 description: > # this means to ignore newlines until "baseurl:"
   Welcome to our new, experimental corsswords, which can be filled in online.
-baseurl: "" # e.g. /crossword-minisite, for local builds only, is ignored by GH Pages
+baseurl: "/crossword-minisite" # e.g. /crossword-minisite, for local builds only, is ignored by GH Pages
 url: "http://labs.ft.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ftlabs
 github_username:  railsagainstignorance
