@@ -1,0 +1,54 @@
+.page-inner-container {
+    max-width: $content-width;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    background-color: $dark-background;    
+    color: $light-font-colour;
+    text-align: center;
+    padding: 120px 0;
+}
+
+h1.page-heading {
+    margin: 0;
+    font-family: $serif-font;
+    font-weight: normal;
+    font-size: 80px;
+    line-height: 100px;
+}
+
+.page-subheading {
+    font-family: $sans-serif-font;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 26px;
+}
+
+.crossword-list-container {
+    margin-top: 30px;
+}
+
+@include media-query($on-palm) {
+    .crossword-list-container {
+        margin-top: 15px;
+    }
+
+    .page-title {
+        padding: 60px 0;
+    }
+    
+    h1.page-heading {
+        margin: 0;
+        font-family: $serif-font;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 60px;
+    }
+
+    .page-subheading {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}

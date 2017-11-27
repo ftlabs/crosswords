@@ -1,0 +1,93 @@
+header {
+    background-color: $dark-background;
+    border-bottom: 1px solid $border-colour;
+    color: $light-font-colour;
+}
+
+.header-inner-container {
+    display: table;
+    width: 100%;    
+    max-width: $header-content-width;
+    margin: 0 auto;
+}
+
+.header-left, .header-middle, .header-right {
+    display: table-cell;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+.header-left {
+    text-align: left;
+    padding-left: 15px;
+    width: 200px;
+}
+
+.header-title {
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.header-title-ft {
+    font-family: $serif-font;
+}
+
+.header-title-name {
+    font-family: $sans-serif-font;
+    font-weight: 500;
+}
+
+header a {
+    color: $light-font-colour;    
+}
+
+.header-about {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: $sans-serif-font;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header-right {
+    padding-right: 15px;
+    text-align: right;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: $sans-serif-font;
+}
+
+.header-feedback-title {
+    font-weight: 400;    
+}
+
+.header-feedback-link {
+    font-weight: 300;
+}
+
+@include media-query($on-palm) {
+    .header-left {
+        width: 100%;
+        display: block;
+        padding-bottom: 0;
+    }
+
+    .header-about, .header-right {
+        font-size: 14px;
+        line-height: 16px;   
+    }
+
+    .header-middle {
+        padding-left: 5px;
+        width: 20%;        
+        display: inline-block;
+    }
+
+    .header-right {
+        width: 80%;
+        display: inline-block;
+    }
+}    

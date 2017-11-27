@@ -1,0 +1,31 @@
+.alert-condition {
+    background-color: orange;
+}
+
+.entry-pieces {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.entry-piece {
+    margin-left: 5px;
+}
+
+#grid {
+    letter-spacing: 1em;
+}
+
+.responsive-crossword {
+    width: 100%;
+}
+
+.responsive-crossword-with-answers {
+    width: 50%;
+}
+
+.winner {
+    white-space: nowrap;
+}

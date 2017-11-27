@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ site.title }}</title>
+    <!--
+        Perform your cuts the mustard test.
+        For information about what features come bundled with other
+        features in all browsers, see caniuse.com
+    -->
+    <script>
+        var cutsTheMustard = ('querySelector' in document && 'localStorage' in window && 'addEventListener' in window);
+
+        if (cutsTheMustard) {
+            // Swap the `core` class on the HTML element for an `enhanced` one
+            // We're doing it early in the head to avoid a flash of unstyled content
+            document.documentElement.className = document.documentElement.className.replace(/\bcore\b/g, 'enhanced');
+        }
+    </script>
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}" />
+
+    <link rel="stylesheet" href="//origami-build.ft.com/v2/bundles/css?modules=o-fonts@^3.0.3,o-colors@^4.1.4,o-grid@^4.3.5,o-icons@^5.4.2,o-typography@^5.4.0,o-teaser-collection@^2.1.0" />
+
+    <script>(function(d) { d.className = d.className + ' demo-js'; })(document.documentElement);</script>
+    <link rel="stylesheet" href="//origami-build.ft.com/v2/bundles/css?modules=o-crossword%40{{ site.o_crossword_version }}">
+
+     <script src="//polyfill.webservices.ft.com/v1/polyfill.min.js"></script>
+
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% include google-analytics.html %}
+    {% else %}
+    <!-- not included google-analytics -->
+    {% endif %}
+
+</head>

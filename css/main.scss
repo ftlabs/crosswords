@@ -1,0 +1,75 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+$dark-background:  #262A33;
+$light-background: #FFF1E5;
+
+$border-colour: #ffffff;
+
+$light-font-colour: #ffffff;
+$dark-font-colour: #000000;
+$mid-font-colour: #4D4845;
+
+$serif-font: FinancierDisplayWeb, serif;
+$sans-serif-font: MetricWeb, sans-serif;
+
+// Width of the content area
+$content-width:    1100px;
+
+$header-content-width: 1300px;
+
+$on-palm:          600px;
+$on-laptop:        1100px;
+
+// Use media queries like this:
+// @include media-query($on-palm) {
+//   .wrapper {
+//     padding-right: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+//   }
+// }
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+@import "header", "crossword", "crossword-list", "page";
+
+/* Hide any enhanced experience content when in core mode, and vice versa. */
+.core .o--if-js,
+.enhanced .o--if-no-js { display: none !important; }
+
+body {
+    /* Remove space around the document */
+    margin: 0;
+    background-color: $light-background;    
+}
+
+html {
+    /* Set a font family on the whole document */
+    font-family: $serif-font;
+
+    /* Prevent navigation menus from creating
+       extra space on sides of the page */
+    overflow-x: hidden;
+
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;    
+}
