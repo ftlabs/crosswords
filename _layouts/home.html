@@ -16,16 +16,17 @@ layout: default
 
   <div class="crossword-list-container page-inner-container">
     <div class="crossword-list">
-      <div class="o-teaser-collection"> 
-        <h2 class="o-teaser-collection__heading">Dynamic Crosswords</h2>  
+      <div class="o-teaser-collection">
+        <h2 class="o-teaser-collection__heading">Dynamic Crosswords</h2>
 
         <div class="o-grid-container no-padding">
           {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
-          
+
           <div class="o-grid-row">
           {% for post in dynamic-posts limit:9 %}
-            <div data-o-grid-colspan="12 S12 M6 L4">  
-              <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                    
+            <div data-o-grid-colspan="12 S12 M6 L4">
+              <!-- <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                     -->
+                <a class="crossword-link" href="{{ post.url | relative_url }}">
                 <div class="crossword-link-cell crossword-link-cell--dynamic">
                     <div class="crossword-title">{{ post.title | escape }}</div>
                     <div class="crossword-first-clue">
@@ -48,25 +49,25 @@ layout: default
     <div class="crossword-list">
       <div class="o-teaser-collection">
         <h2 class="o-teaser-collection__heading">Recent Static Crosswords</h2>
-  
+
         <div class="o-grid-container no-padding">
           {% assign static-posts = site.posts | where: "type", 'static' %}
 
           <div class="o-grid-row">
           {% for post in static-posts limit:12 %}
-            <div data-o-grid-colspan="12 S12 M6 L4">  
-              <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                      
+            <div data-o-grid-colspan="12 S12 M6 L4">
+              <a class="crossword-link" href="{{ post.url | relative_url }}">
                 <div class="crossword-link-cell">
                     <div class="crossword-title-static">{{ post.title | escape }}</div>
                     <div class="crossword-date-static">{{ post.date | date: "%B %d, %Y" }}</div>
                 </div>
-              </a>                
+              </a>
             </div>
           {% endfor %}
           </div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <!-- <a href="#" class="crossword-list-more-button-link">
       <div class="crossword-list-more-button">+ More Crosswords</div>
