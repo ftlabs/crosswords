@@ -1,129 +1,15 @@
 <!DOCTYPE html>
 <html class="core" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{{ site.title }}</title>
-		<!--
-			Perform your cuts the mustard test.
-			For information about what features come bundled with other
-			features in all browsers, see caniuse.com
-		-->
-		<script>
-			var cutsTheMustard = ('querySelector' in document && 'localStorage' in window && 'addEventListener' in window);
 
-			if (cutsTheMustard) {
-				// Swap the `core` class on the HTML element for an `enhanced` one
-				// We're doing it early in the head to avoid a flash of unstyled content
-				document.documentElement.className = document.documentElement.className.replace(/\bcore\b/g, 'enhanced');
-			}
-		</script>
+	{% include head.html %}
 
-   	<style>
-			/* Hide any enhanced experience content when in core mode, and vice versa. */
-			.core .o--if-js,
-			.enhanced .o--if-no-js { display: none !important; }
-
-			body {
-				/* Remove space around the document */
-				/* margin: 0; */
-			}
-			html {
-				/* Set a font family on the whole document */
-				font-family: Metric, serif;
-
-				/* Prevent navigation menus from creating
-				   extra space on sides of the page */
-				overflow-x: hidden;
-
-			    padding: 0;
-			    margin: 0;
-			    width: 100%;
-			    height: 100%;
-			}
-			h1 {
-			    font-family: FinancierDisplay, serif;
-			    text-align: center;
-			    font-size: 300%;
-			}
-
-			h2 {
-			    font-family: FinancierDisplay, serif;
-			    text-align: center;
-			    font-size: 200%;
-			}
-
-			body {
-			    background-color: #fff1e0;
-			}
-
-			.alert-condition {
-				background-color: orange;
-			}
-
-			.entry-pieces {
-			   display: -webkit-flex;
-			   display: flex;
-			   -webkit-flex-direction: row;
-			   flex-direction: row;
-			   flex-wrap: wrap;
-			}
-
-			.entry-piece {
-				margin-left: 5px;
-			}
-
-			#grid {
-				letter-spacing: 1em;
-			}
-
-			.responsive-crossword {
-				width: 100%;
-			}
-			.responsive-crossword-with-answers {
-				width: 50%;
-			}
-
-			.winner {
-				white-space:nowrap;
-			}
-
- 		</style>
-
-		<link rel="stylesheet" href="//origami-build.ft.com/v2/bundles/css?modules=o-fonts@^2,o-icons@^5.2.0,o-teaser@^1.3.1,o-header-services@^1.0.2" />
-
-  	<script>(function(d) { d.className = d.className + ' demo-js'; })(document.documentElement);</script>
-  	<link rel="stylesheet" href="//origami-build.ft.com/v2/bundles/css?modules=o-crossword%40{{ site.o_crossword_version }}">
-
-	  <script src="//polyfill.webservices.ft.com/v1/polyfill.min.js"></script>
-
-    {% if site.google_analytics and jekyll.environment == 'production' %}
-      {% include google-analytics.html %}
-    {% else %}
-      <!-- not included google-analytics -->
-    {% endif %}
-
-	</head>
 	<body>
-		<header class="o-header-services" data-o-component="o-header">
-			<div class="o-header-services__top o-header-services__container">
-				<div class="o-header-services__ftlogo"></div>
-				<div class="o-header-services__title">
-					<h1 class="o-header-services__product-name">
-						<a href="/">{{ site.title }}</a>
-						<a href="/about">About</a>
-						Experimental Feature
-						<a href="{{site.feedback_url}}">Give us your feedback</a>
-					</h1>
-				</div>
-			</div>
-		</header>
 
-    {{ content }}
+		{% include header.html %}
 
-    <script src="//origami-build.ft.com/v2/bundles/js?modules=o-crossword%40{{ site.o_crossword_version }}"></script>
-		<script src="//registry.origami.ft.com/embedapi?autoload=resize"></script>
+    	{{ content }}
 
+		{% include footer.html %}
+		
 	</body>
 </html>
