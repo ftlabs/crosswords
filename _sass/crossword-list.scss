@@ -1,4 +1,5 @@
 $cell-colour: #ffffff;
+$button-colour: #000000;
 
 .crossword-link {
     text-decoration: none;    
@@ -48,7 +49,27 @@ $cell-colour: #ffffff;
 .crossword-date-static {
     font-family: $sans-serif-font;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 18px;
     font-weight: 400;    
     color: $mid-font-colour; 
+}
+
+.crossword-list-more-button-link {
+    text-decoration: none;
+}
+
+.crossword-list-more-button {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    font-family: $sans-serif-font;
+    font-size: 16px;
+    line-height: 18px;
+    color: $light-font-colour;    
+    background-color: $button-colour;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 10px;
 }
