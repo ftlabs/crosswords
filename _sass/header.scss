@@ -2,8 +2,13 @@ header {
     background-color: $dark-background;
     border-bottom: 1px solid $border-colour;
     color: $light-font-colour;
+}
+
+.header-inner-container {
     display: table;
-    width: 100%;
+    width: 100%;    
+    max-width: $header-content-width;
+    margin: 0 auto;
 }
 
 .header-left, .header-middle, .header-right {
