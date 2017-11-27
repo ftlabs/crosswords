@@ -4,50 +4,59 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Financial Times Crosswords</h1>
+  <div class="page-title">
+    <h1 class="page-heading">Financial Times Crosswords</h1>
 
-  <p>
-    Welcome to our new, experimental crosswords, which can be filled in on-line.
-  </p>
-  <p>
-    N.B. we are particularly keen to hear how these crosswords behave on smartphones.
-  </p>
+    <div class="page-subheading">
+      Welcome to our new, experimental crosswords, which can be filled in on-line.
+    </div>
+  </div>
 
-  {{ content }}
+  <div class="crossword-list">
+    <h2>Dynamic Crosswords</h2>
 
-  <h2>Dynamic Crosswords</h2>
+    <div class="o-grid-container">
+      {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
+      
+      <div class="o-grid-row">
+      {% for post in dynamic-posts limit:9 %}
+        <div data-o-grid-colspan="4 S12 M6 L4">  
+          <div class="crossword-link">
+            <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
+              <span class="post-title">{{ post.title | escape }}</span>
+              <br>
+              <span class="post-author">{{ post.author | escape }}</span>
+              <br>
+              <span class="post-first-clue">{{ post.first-clue | escape }}</span>
+              <br>
+              <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
 
-  <ul class="post-list, dynamic">
-    {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
+  <div class="crossword-list">
+      <h2>Recent Static Crosswords</h2>
+  
+      <div class="o-grid-container">
+        {% assign static-posts = site.posts | where: "type", 'static' %}
 
-    {% for post in dynamic-posts limit:9 %}
-      <li>
-        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
-          <span class="post-title">{{ post.title | escape }}</span>
-          <br>
-          <span class="post-author">{{ post.author | escape }}</span>
-          <br>
-          <span class="post-first-clue">{{ post.first-clue | escape }}</span>
-          <br>
-          <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-
- <h2>Recent Static Crosswords</h2>
-
-  <ul class="post-list, non-dynamic">
-    {% assign static-posts = site.posts | where: "type", 'static' %}
-
-    {% for post in static-posts limit:12 %}
-      <li>
-        <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
-          <span class="post-title">{{ post.title | escape }}</span>
-          <br>
-          <span class="post-date" >{{ post.date | date: "%b %d, %Y" }}</span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+        <div class="o-grid-row">
+        {% for post in static-posts limit:12 %}
+          <div data-o-grid-colspan="4 S12 M6 L4">  
+            <div class="crossword-link">
+              <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
+                <span class="post-title">{{ post.title | escape }}</span>
+                <br>
+                <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
 </div>
