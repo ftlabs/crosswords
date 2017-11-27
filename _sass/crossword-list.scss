@@ -1,5 +1,54 @@
 $cell-colour: #ffffff;
 
+.crossword-link {
+    text-decoration: none;    
+}
+
 .crossword-link-cell {
     background-color: $cell-colour;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.crossword-link-cell--dynamic {
+    text-align: center;    
+}
+
+.crossword-title, .crossword-date {
+    font-family: $sans-serif-font;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;    
+    color: $dark-font-colour;   
+}
+
+.crossword-first-clue {
+    font-family: $sans-serif-font;    
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 500;    
+    color: $dark-font-colour;   
+    
+    height: 100px;
+}
+
+.crossword-first-clue .crossword-first-clue-inner {
+    padding: 20px;
+}
+
+.crossword-title-static {
+    font-family: $sans-serif-font;    
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 500;    
+    color: $dark-font-colour; 
+    margin-bottom: 5px;
+}
+
+.crossword-date-static {
+    font-family: $sans-serif-font;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;    
+    color: $mid-font-colour; 
 }

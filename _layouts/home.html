@@ -14,28 +14,26 @@ layout: default
     </div>
   </div>
 
-  <div class="page-inner-container">
+  <div class="crossword-list-container page-inner-container">
     <div class="crossword-list">
       <div class="o-teaser-collection"> 
         <h2 class="o-teaser-collection__heading">Dynamic Crosswords</h2>  
 
-        <div class="o-grid-container">
+        <div class="o-grid-container no-padding">
           {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
           
           <div class="o-grid-row">
           {% for post in dynamic-posts limit:9 %}
             <div data-o-grid-colspan="4 S12 M6 L4">  
-              <div class="crossword-link-cell">
-                <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
-                  <span class="post-title">{{ post.title | escape }}</span>
-                  <br>
-                  <span class="post-author">{{ post.author | escape }}</span>
-                  <br>
-                  <span class="post-first-clue">{{ post.first-clue | escape }}</span>
-                  <br>
-                  <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-                </a>
-              </div>
+              <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                    
+                <div class="crossword-link-cell crossword-link-cell--dynamic">
+                    <div class="crossword-title">{{ post.title | escape }}</div>
+                    <div class="crossword-first-clue">
+                      <div class="crossword-first-clue-inner">{{ post.first-clue | escape }}</div>
+                    </div>
+                    <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
+                </div>
+              </a>
             </div>
           {% endfor %}
           </div>
@@ -47,19 +45,18 @@ layout: default
         <div class="o-teaser-collection">
           <h2 class="o-teaser-collection__heading">Recent Static Crosswords</h2>
     
-          <div class="o-grid-container">
+          <div class="o-grid-container no-padding">
             {% assign static-posts = site.posts | where: "type", 'static' %}
 
             <div class="o-grid-row">
             {% for post in static-posts limit:12 %}
               <div data-o-grid-colspan="4 S12 M6 L4">  
-                <div class="crossword-link-cell">
-                  <a class="post-link" href="{{ post.url | prepend: site.github.url }}">
-                    <span class="post-title">{{ post.title | escape }}</span>
-                    <br>
-                    <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-                  </a>
-                </div>
+                <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                      
+                  <div class="crossword-link-cell">
+                      <div class="crossword-title-static">{{ post.title | escape }}</div>
+                      <div class="crossword-date-static">{{ post.date | date: "%B %d, %Y" }}</div>
+                  </div>
+                </a>                
               </div>
             {% endfor %}
             </div>

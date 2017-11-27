@@ -9,6 +9,8 @@ $light-background: #FFF1E5;
 $border-colour: #ffffff;
 
 $light-font-colour: #ffffff;
+$dark-font-colour: #000000;
+$mid-font-colour: #4D4845;
 
 $serif-font: FinancierDisplayWeb, serif;
 $sans-serif-font: MetricWeb, sans-serif;
@@ -60,4 +62,9 @@ html {
 
 body {
     background-color: $light-background;
+}
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;    
 }
