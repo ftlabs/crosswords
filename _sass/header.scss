@@ -16,7 +16,7 @@ header {
 .header-left {
     text-align: left;
     padding-left: 15px;
-    width: 15%;
+    width: 20%;
 }
 
 .header-title {
@@ -43,6 +43,8 @@ header a {
     line-height: 18px;
     font-family: $sans-serif-font;
     font-weight: 400;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .header-right {
@@ -60,3 +62,27 @@ header a {
 .header-feedback-link {
     font-weight: 300;
 }
+
+@include media-query($on-palm) {
+    .header-left {
+        width: 100%;
+        display: block;
+        padding-bottom: 0;
+    }
+
+    .header-about, .header-right {
+        font-size: 14px;
+        line-height: 16px;   
+    }
+
+    .header-middle {
+        padding-left: 5px;
+        width: 20%;        
+        display: inline-block;
+    }
+
+    .header-right {
+        width: 80%;
+        display: inline-block;
+    }
+}    

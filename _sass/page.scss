@@ -1,7 +1,7 @@
 .page-inner-container {
     max-width: $content-width;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
 }
 
 .page-title {
@@ -28,4 +28,27 @@ h1.page-heading {
 
 .crossword-list-container {
     margin-top: 30px;
+}
+
+@include media-query($on-palm) {
+    .crossword-list-container {
+        margin-top: 15px;
+    }
+
+    .page-title {
+        padding: 60px 0;
+    }
+    
+    h1.page-heading {
+        margin: 0;
+        font-family: $serif-font;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 60px;
+    }
+
+    .page-subheading {
+        font-size: 16px;
+        line-height: 18px;
+    }
 }
