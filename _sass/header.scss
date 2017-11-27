@@ -1,11 +1,62 @@
 header {
     background-color: $dark-background;
+    border-bottom: 1px solid $border-colour;
+    color: $light-font-colour;
+    display: table;
+    width: 100%;
 }
 
-.page-title {
-    background-color: $dark-background;
+.header-left, .header-middle, .header-right {
+    display: table-cell;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
 }
 
-h1.page-heading {
-    margin: 0;
+.header-left {
+    text-align: left;
+    padding-left: 15px;
+    width: 15%;
+}
+
+.header-title {
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.header-title-ft {
+    font-family: $serif-font;
+}
+
+.header-title-name {
+    font-family: $sans-serif-font;
+    font-weight: 500;
+}
+
+header a {
+    color: $light-font-colour;    
+}
+
+.header-about {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: $sans-serif-font;
+    font-weight: 400;
+}
+
+.header-right {
+    padding-right: 15px;
+    text-align: right;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: $sans-serif-font;
+}
+
+.header-feedback-title {
+    font-weight: 400;    
+}
+
+.header-feedback-link {
+    font-weight: 300;
 }

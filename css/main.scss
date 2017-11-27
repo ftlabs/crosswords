@@ -6,6 +6,10 @@
 $dark-background:  #262A33;
 $light-background: #FFF1E5;
 
+$border-colour: #ffffff;
+
+$light-font-colour: #ffffff;
+
 $serif-font: FinancierDisplayWeb, serif;
 $sans-serif-font: MetricWeb, sans-serif;
 
@@ -29,7 +33,7 @@ $on-laptop:        1100px;
   }
 }
 
-@import "header";
+@import "header", "crossword", "crossword-list", "page";
 
 /* Hide any enhanced experience content when in core mode, and vice versa. */
 .core .o--if-js,
@@ -54,51 +58,6 @@ html {
     height: 100%;
 }
 
-h1 {
-    font-family: $sans-serif-font;
-    text-align: center;
-    font-size: 300%;
-}
-
-h2 {
-    font-family: $sans-serif-font;
-    text-align: center;
-    font-size: 200%;
-}
-
 body {
     background-color: $light-background;
 }
-
-.alert-condition {
-    background-color: orange;
-}
-
-.entry-pieces {
-   display: -webkit-flex;
-   display: flex;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   flex-wrap: wrap;
-}
-
-.entry-piece {
-    margin-left: 5px;
-}
-
-#grid {
-    letter-spacing: 1em;
-}
-
-.responsive-crossword {
-    width: 100%;
-}
-
-.responsive-crossword-with-answers {
-    width: 50%;
-}
-
-.winner {
-    white-space:nowrap;
-}
-
