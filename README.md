@@ -2,7 +2,7 @@
 
 To see if Jekyll is suitable...
 
-... [live pages](//ftlabs.github.io/crossword-minisite/)
+... [live pages](//ftlabs.github.io/crosswords/)
 
 ## Update the crosswords from ft.com
 
