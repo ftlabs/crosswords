@@ -2,7 +2,7 @@ $cell-colour: #ffffff;
 $button-colour: #000000;
 
 .crossword-link {
-    text-decoration: none;    
+    text-decoration: none;
 }
 
 .crossword-link-cell {
@@ -12,24 +12,29 @@ $button-colour: #000000;
 }
 
 .crossword-link-cell--dynamic {
-    text-align: center;    
+    text-align: center;
+}
+
+.crossword-link-img {
+    max-width: 90%;
+    max-height: 100%;    
 }
 
 .crossword-title, .crossword-date {
     font-family: $sans-serif-font;
     font-size: 16px;
     line-height: 20px;
-    font-weight: 500;    
-    color: $dark-font-colour;   
+    font-weight: 500;
+    color: $dark-font-colour;
 }
 
 .crossword-first-clue {
-    font-family: $sans-serif-font;    
+    font-family: $sans-serif-font;
     font-size: 24px;
     line-height: 26px;
-    font-weight: 500;    
-    color: $dark-font-colour;   
-    
+    font-weight: 500;
+    color: $dark-font-colour;
+
     height: 100px;
 }
 
@@ -38,11 +43,11 @@ $button-colour: #000000;
 }
 
 .crossword-title-static {
-    font-family: $sans-serif-font;    
+    font-family: $sans-serif-font;
     font-size: 20px;
     line-height: 22px;
-    font-weight: 500;    
-    color: $dark-font-colour; 
+    font-weight: 500;
+    color: $dark-font-colour;
     margin-bottom: 5px;
 }
 
@@ -50,8 +55,8 @@ $button-colour: #000000;
     font-family: $sans-serif-font;
     font-size: 16px;
     line-height: 18px;
-    font-weight: 400;    
-    color: $mid-font-colour; 
+    font-weight: 400;
+    color: $mid-font-colour;
 }
 
 .crossword-list-more-button-link {
@@ -62,7 +67,7 @@ $button-colour: #000000;
     font-family: $sans-serif-font;
     font-size: 16px;
     line-height: 18px;
-    color: $light-font-colour;    
+    color: $light-font-colour;
     background-color: $button-colour;
     text-align: center;
     width: 100%;

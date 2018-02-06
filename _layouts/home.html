@@ -24,13 +24,16 @@ layout: default
 
           <div class="o-grid-row">
           {% for post in dynamic-posts limit:9 %}
+            {% comment %} make a persistent mapping from each post's crossword-id to a panel image {% endcomment %}
+            {% assign handle = post.crossword-id | default: "001" %}
+            {% assign img-index = handle | split: " " | last | split: "," | last | to_integer | modulo:9 %}
+            {% assign panel = "assets/imgs/panel" | append: img-index | append: ".png" %}
             <div data-o-grid-colspan="12 S12 M6 L4">
-              <!-- <a class="crossword-link" href="{{ post.url | prepend: site.github.url }}">                     -->
                 <a class="crossword-link" href="{{ post.url | relative_url }}">
                 <div class="crossword-link-cell crossword-link-cell--dynamic">
                     <div class="crossword-title">{{ post.title | escape }}</div>
                     <div class="crossword-first-clue">
-                      <div class="crossword-first-clue-inner">{{ post.first-clue | escape }}</div>
+                      <img class="crossword-link-img" src="{{ panel }}" alt="{{ handle }}">
                     </div>
                     <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
                 </div>
