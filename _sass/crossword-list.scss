@@ -17,15 +17,20 @@ $button-colour: #000000;
 
 .crossword-link-img {
     max-width: 90%;
-    max-height: 100%;    
+    max-height: 100%;
 }
 
 .crossword-title, .crossword-date {
     font-family: $sans-serif-font;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 22px;
     font-weight: 500;
     color: $dark-font-colour;
+    text-shadow:
+      -1px -1px 0 white,
+      1px -1px 0 white,
+      -1px 1px 0 white,
+      1px 1px 0 white;
 }
 
 .crossword-first-clue {
@@ -73,4 +78,41 @@ $button-colour: #000000;
     width: 100%;
     margin-bottom: 40px;
     padding: 10px;
+}
+
+.crossword-panel-0 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel0.png");
+}
+.crossword-panel-1 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel1.png");
+}
+.crossword-panel-2 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel2.png");
+}
+.crossword-panel-3 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel3.png");
+}
+.crossword-panel-4 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel4.png");
+}
+.crossword-panel-5 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel5.png");
+}
+.crossword-panel-6 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel6.png");
+}
+.crossword-panel-7 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel7.png");
+}
+.crossword-panel-8 {
+  background-size: 100%;
+  background-image: url("../assets/imgs/panel8.png");
 }
