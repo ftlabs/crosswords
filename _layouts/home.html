@@ -30,13 +30,12 @@ layout: default
             {% assign panel = "assets/imgs/panel" | append: img-index | append: ".png" %}
             {% assign panel-class = "crossword-panel-" | append: img-index %}
             <div data-o-grid-colspan="12 S12 M6 L4">
-                <a class="crossword-link" href="{{ post.url | relative_url }}">
-                <div class="crossword-link-cell crossword-link-cell--dynamic {{ panel-class }}">
-                    <div class="crossword-title">{{ post.title | escape }}</div>
-                    <div class="crossword-first-clue">
+              <a class="crossword-link" href="{{ post.url | relative_url }}">
+                  <div class="crossword-info crossword-info--dynamic">
+                     <div class="crossword-title">{{ post.title | escape }}</div>
+                      <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
                     </div>
-                    <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
-                </div>
+                  <div class="crossword-link-cell crossword-link-cell--dynamic {{ panel-class }}"></div>
               </a>
             </div>
           {% endfor %}
@@ -60,10 +59,10 @@ layout: default
           {% for post in static-posts limit:12 %}
             <div data-o-grid-colspan="12 S12 M6 L4">
               <a class="crossword-link" href="{{ post.url | relative_url }}">
-                <div class="crossword-link-cell">
-                    <div class="crossword-title-static">{{ post.title | escape }}</div>
-                    <div class="crossword-date-static">{{ post.date | date: "%B %d, %Y" }}</div>
-                </div>
+                  <div class="crossword-info">
+                      <div class="crossword-title-static">{{ post.title | escape }}</div>
+                      <div class="crossword-date-static">{{ post.date | date: "%B %d, %Y" }}</div>
+                  </div>
               </a>
             </div>
           {% endfor %}
