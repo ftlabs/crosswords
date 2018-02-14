@@ -19,7 +19,7 @@ layout: default
 
 	{% if page.pdf %}
 	<p>
-	or as a <a href="{{ page.pdf }}">PDF file</a>
+	or as a <a href="{{ page.pdf }}" class="crossword-link--download" onclick="document.body.dispatchEvent(new CustomEvent('oTracking.event', { detail: { category: 'ftlabs-crossword', action: 'download', crosswordID: '{{page.crossword-id}}'}, bubbles: true}));" download>PDF file</a>
 	</p>
 	{% endif %}
 </div>

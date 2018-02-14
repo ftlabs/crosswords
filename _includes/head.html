@@ -27,6 +27,40 @@
 
      <script src="//polyfill.webservices.ft.com/v1/polyfill.min.js"></script>
 
+     <script>
+        function oTrackinginit() {
+            console.log('oTrackinginit');
+            // oTracking
+            var oTracking = Origami['o-tracking'];
+            var config_data = {
+                server: 'https://spoor-api.ft.com/px.gif',
+                context: {
+                    product: 'ftlabs-crossword'
+                }
+            }
+            // Setup
+            oTracking.init(config_data);
+
+            oTracking.page({ detail: { content: { pageLayout: "{{page.layout}}", pageID: "{{page.crossword-id}}"}}, bubbles: true})
+        }
+        if (cutsTheMustard) {
+            var o = document.createElement('script');
+            o.async = o.defer = true;
+            o.src = 'https://build.origami.ft.com/v2/bundles/js?modules=o-tracking';
+            var s = document.getElementsByTagName('script')[0];
+            if (o.hasOwnProperty('onreadystatechange')) {
+                o.onreadystatechange = function() {
+                    if (o.readyState === "loaded") {
+                        oTrackinginit();
+                    }
+                };
+            } else {
+                o.onload = oTrackinginit;
+            }
+            s.parentNode.insertBefore(o, s);
+        }
+    </script>
+
     {% if site.google_analytics and jekyll.environment == 'production' %}
     {% include google-analytics.html %}
     {% else %}
