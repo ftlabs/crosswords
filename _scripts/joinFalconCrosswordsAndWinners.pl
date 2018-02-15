@@ -91,6 +91,10 @@ foreach my $line (@crossword_lines) {
     $cStruct->{'date'} = $date;
     $cStruct->{'filename'} = $filename;
 
+    my $title = $id;
+    $title =~ s/Crossword /Crossword No. /;
+    $cStruct->{'title'} = $title;
+
     $cws->{ $cStruct->{'id'} } = $cStruct;
   } else {
     print "DEBUG: unmatched crossword line=${line}\n";
@@ -149,6 +153,7 @@ foreach my $id (@cIds){
   my @lines = (
     '---',
           'layout: crossword-pdf',
+           'title: ' . $cStruct->{'title'},
     'crossword-id: ' . $id,
              'pdf: ' . $cStruct->{'pdf'},
             'uuid: ' . $cStruct->{'uuid'},
