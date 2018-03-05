@@ -32,6 +32,10 @@ layout: default
   </p>
   {% endif %}
 
+  {% if page.context %}
+  <p>{{ page.context }}</p>
+  {% endif %}
+
   <div style="width: 100%;">
     <div class="o-crossword" data-o-component="o-crossword" data-o-crossword-data="{{ content | remove: '<p>' | remove: '</p>' | escape }}">
       <table class="o-crossword-table"></table>
