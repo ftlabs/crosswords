@@ -17,7 +17,7 @@ layout: default
 {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
 {% assign dynamic-posts-grouped = dynamic-posts | group_by: 'author' | sort: 'name' %}
 <div class="crossword-list-container page-inner-container">
-  <h2>Authors</h2>
+  <h2>Crossword Authors</h2>
   <p class="authors-names">
   {% for author-group in dynamic-posts-grouped %}
     {% assign linkable-name = author-group.name | slugify %}
