@@ -16,13 +16,26 @@ layout: default
 
 {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
 {% assign dynamic-posts-grouped = dynamic-posts | group_by: 'author' | sort: 'name' %}
+<div class="crossword-list-container page-inner-container">
+  <h2>Authors</h2>
+  <p class="authors-names">
+  {% for author-group in dynamic-posts-grouped %}
+    {% assign linkable-name = author-group.name | slugify %}
+    {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
+    {{ link-to-name }},
+  {% endfor %}
+  </p>
+</div>
 {% for author-group in dynamic-posts-grouped %}
-{% assign dynamic-posts = author-group.items %}
+  {% assign dynamic-posts = author-group.items %}
+  {% assign linkable-name = author-group.name | slugify %}
 
   <div class="crossword-list-container page-inner-container">
     <div class="crossword-list">
       <div class="o-teaser-collection">
-        <h2 class="o-teaser-collection__heading">Crosswords by {{ author-group.name }}</h2>
+        <a name="{{ linkable-name }}">
+          <h2 class="o-teaser-collection__heading">Crosswords by {{ author-group.name }}</h2>
+        </a>
         <div class="o-grid-container no-padding">
           <div class="o-grid-row">
           {% for post in dynamic-posts limit:9 %}
