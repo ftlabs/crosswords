@@ -2,6 +2,12 @@
     background-color: orange;
 }
 
+.post-title {
+  a {
+    color: $link-font-colour;
+  }
+}
+
 .entry-pieces {
    display: -webkit-flex;
    display: flex;

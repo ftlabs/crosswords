@@ -26,7 +26,7 @@ layout: default
 {% assign author-link = 'byauthor#' | append: linkable-name | relative_url %}
 
 <div class="page-inner-container">
-  <h1 class="post-title" itemprop="name headline">{{ page.title | escape }} Set by <a href="{{author-link}}">{{ page.author | escape }}</a></h1>
+  <h1 class="post-title" itemprop="name headline">{{ page.title | escape }} set by <a href="{{author-link}}">{{ page.author | escape }}</a></h1>
   <h2>{{ page.date | date: "%a, %d %B %Y" }}</h2>
   {% if page.winners %}
   <p>

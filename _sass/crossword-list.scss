@@ -3,8 +3,15 @@ $button-colour: #000000;
 
 .authors-names {
     font-family: $sans-serif-font;
-    font-size: 200%;
-    line-height: 1;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0;
+
+    a {
+      color: $link-font-colour;
+      padding-right: 20px;
+    }
 }
 
 .crossword-link {

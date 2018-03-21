@@ -22,7 +22,7 @@ layout: default
   {% for author-group in dynamic-posts-grouped %}
     {% assign linkable-name = author-group.name | slugify %}
     {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
-    {{ link-to-name }},
+    {{ link-to-name }}
   {% endfor %}
   </p>
 </div>
