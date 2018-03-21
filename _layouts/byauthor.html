@@ -14,17 +14,15 @@ layout: default
     </div>
   </div>
 
-{% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
+{% assign dynamic-posts = site.posts | where: "type", 'dynamic' | where_exp:"item", "item.author != 'Warning Experimental'"  %}
 {% assign dynamic-posts-grouped = dynamic-posts | group_by: 'author' | sort: 'name' %}
 <div class="crossword-list-container page-inner-container">
   <h2>Crossword Authors</h2>
   <p class="authors-names">
   {% for author-group in dynamic-posts-grouped %}
-    {% if author-group.name != 'Warning Experimental' %}
-      {% assign linkable-name = author-group.name | slugify %}
-      {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
-      {{ link-to-name }}
-    {% endif %}
+    {% assign linkable-name = author-group.name | slugify %}
+    {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
+    {{ link-to-name }}
   {% endfor %}
   </p>
 </div>
