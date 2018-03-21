@@ -5,6 +5,11 @@
 .post-title {
   a {
     color: $link-font-colour;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

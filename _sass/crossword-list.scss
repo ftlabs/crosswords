@@ -11,6 +11,11 @@ $button-colour: #000000;
     a {
       color: $link-font-colour;
       padding-right: 20px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 }
 

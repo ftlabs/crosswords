@@ -20,44 +20,48 @@ layout: default
   <h2>Crossword Authors</h2>
   <p class="authors-names">
   {% for author-group in dynamic-posts-grouped %}
-    {% assign linkable-name = author-group.name | slugify %}
-    {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
-    {{ link-to-name }}
+    {% if author-group.name != 'Warning Experimental' %}
+      {% assign linkable-name = author-group.name | slugify %}
+      {% capture link-to-name %}<a href="#{{ linkable-name }}">{{ author-group.name }}</a>{% endcapture %}
+      {{ link-to-name }}
+    {% endif %}
   {% endfor %}
   </p>
 </div>
 {% for author-group in dynamic-posts-grouped %}
-  {% assign dynamic-posts = author-group.items %}
-  {% assign linkable-name = author-group.name | slugify %}
+  {% if author-group.name != 'Warning Experimental' %}
+    {% assign dynamic-posts = author-group.items %}
+    {% assign linkable-name = author-group.name | slugify %}
 
-  <div class="crossword-list-container page-inner-container">
-    <div class="crossword-list">
-      <div class="o-teaser-collection">
-        <a name="{{ linkable-name }}">
-          <h2 class="o-teaser-collection__heading">Crosswords by {{ author-group.name }}</h2>
-        </a>
-        <div class="o-grid-container no-padding">
-          <div class="o-grid-row">
-          {% for post in dynamic-posts limit:9 %}
-            {% comment %} make a persistent mapping from each post's crossword-id to a panel image {% endcomment %}
-            {% assign handle = post.crossword-id | default: "001" %}
-            {% assign img-index = handle | split: " " | last | split: "," | last | to_integer | modulo:9 %}
-            {% assign panel = "assets/imgs/panel" | append: img-index | append: ".png" %}
-            {% assign panel-class = "crossword-panel-" | append: img-index %}
-            <div data-o-grid-colspan="12 S12 M6 L4">
-              <a class="crossword-link" href="{{ post.url | relative_url }}">
-                  <div class="crossword-info crossword-info--dynamic">
-                     <div class="crossword-title">{{ post.title | escape }}</div>
-                      <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
-                    </div>
-                  <div class="crossword-link-cell crossword-link-cell--dynamic {{ panel-class }}"></div>
-              </a>
+    <div class="crossword-list-container page-inner-container">
+      <div class="crossword-list">
+        <div class="o-teaser-collection">
+          <a name="{{ linkable-name }}">
+            <h2 class="o-teaser-collection__heading">Crosswords by {{ author-group.name }}</h2>
+          </a>
+          <div class="o-grid-container no-padding">
+            <div class="o-grid-row">
+            {% for post in dynamic-posts limit:9 %}
+              {% comment %} make a persistent mapping from each post's crossword-id to a panel image {% endcomment %}
+              {% assign handle = post.crossword-id | default: "001" %}
+              {% assign img-index = handle | split: " " | last | split: "," | last | to_integer | modulo:9 %}
+              {% assign panel = "assets/imgs/panel" | append: img-index | append: ".png" %}
+              {% assign panel-class = "crossword-panel-" | append: img-index %}
+              <div data-o-grid-colspan="12 S12 M6 L4">
+                <a class="crossword-link" href="{{ post.url | relative_url }}">
+                    <div class="crossword-info crossword-info--dynamic">
+                       <div class="crossword-title">{{ post.title | escape }}</div>
+                        <div class="crossword-date">{{ post.date | date: "%B %d, %Y" }}</div>
+                      </div>
+                    <div class="crossword-link-cell crossword-link-cell--dynamic {{ panel-class }}"></div>
+                </a>
+              </div>
+            {% endfor %}
             </div>
-          {% endfor %}
           </div>
         </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 {% endfor %}
 </div>
