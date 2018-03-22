@@ -1,6 +1,24 @@
 $cell-colour: #ffffff;
 $button-colour: #000000;
 
+.authors-names {
+    font-family: $sans-serif-font;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0;
+
+    a {
+      color: $link-font-colour;
+      padding-right: 20px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+}
+
 .crossword-link {
     text-decoration: none;
     display: block;
