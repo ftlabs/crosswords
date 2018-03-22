@@ -44,7 +44,7 @@ $on-laptop:        1100px;
   }
 }
 
-@import "header", "crossword", "crossword-list", "page";
+@import "header", "crossword", "crossword-list", "page", "print";
 
 /* Hide any enhanced experience content when in core mode, and vice versa. */
 .core .o--if-js,
