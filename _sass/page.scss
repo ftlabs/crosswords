@@ -28,7 +28,8 @@ h1.page-heading {
 
 .crossword-list-container {
     margin-top: 30px;
-    width: $on-laptop;
+    max-width: $on-laptop;
+    width: 100%;
 }
 
 .crossword-link--download {
