@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="page-inner-container">
+	{% capture title %}{{ page.crossword-id | escape }}{% if page.author %}	by {{ page.author | escape }}{% endif %}{% endcapture %}
+	<h1 class="post-title" itemprop="name headline">{{ title }}</h1>
+	<h2>{{ page.date | date: "%a, %d %B %Y" }}</h2>
+
+	{% if page.amuselabs-id %}
+	<iframe
+	src="https://staging.amuselabs.com/pm-demo/crossword?id={{ page.amuselabs-id }}&set=ft&embed=1&theme=ft"
+	title="iframe containing {{title}}"
+	height="700"
+	width="100%"
+	allowfullscreen="true"
+	style="border:none;width: 100% !important;position: static;display: block !important;margin: 0 !important;"
+	name="ft"
+	>
+	  <p>Your browser does not support iframes.</p>
+	</iframe>
+	{% endif %}
+
+</div>
