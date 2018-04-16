@@ -6,8 +6,16 @@ layout: default
 	<h1 class="post-title" itemprop="name headline">{{ title }}</h1>
 	<h2>{{ page.date | date: "%a, %d %B %Y" }}</h2>
 
-	{% if page.iframe-url %}
-	<iframe src="{{ page.iframe-url }}" title="iframe containing {{title}}">
+	{% if page.amuselabs-id %}
+	<iframe
+	src="https://staging.amuselabs.com/pm-demo/crossword?id={{ page.amuselabs-id }}&set=ft&embed=1&theme=ft"
+	title="iframe containing {{title}}"
+	height="700"
+	width="100%"
+	allowfullscreen="true"
+	style="border:none;width: 100% !important;position: static;display: block !important;margin: 0 !important;"
+	name="ft"
+	>
 	  <p>Your browser does not support iframes.</p>
 	</iframe>
 	{% endif %}
