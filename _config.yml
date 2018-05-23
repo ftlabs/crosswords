@@ -52,3 +52,14 @@ defaults:
 webrick:
   headers:
     Cache-Control: 60 # keep short for dev
+
+crossword_group_details:
+  -
+    name: Weekend Quick Slow
+    title_fragment: Quick Slow
+  -
+    name: Weekend Polymath
+    title_fragment: Polymath
+  -
+    name: Daily Crossword
+    title_fragment: Crossword No.
