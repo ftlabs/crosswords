@@ -51,7 +51,7 @@ defaults:
 
 num_recent_crosswords:
   dynamic: 16
-  static: 16
+  static: 14
 
 webrick:
   headers:
