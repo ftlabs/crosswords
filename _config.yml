@@ -49,6 +49,10 @@ defaults:
     values:
       layout: "crossword"
 
+num_recent_crosswords:
+  dynamic: 16
+  static: 16
+
 webrick:
   headers:
     Cache-Control: 60 # keep short for dev

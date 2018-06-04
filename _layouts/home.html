@@ -23,7 +23,7 @@ layout: default
           {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
 
           <div class="o-grid-row">
-          {% for post in dynamic-posts limit:9 %}
+          {% for post in dynamic-posts limit:site.num_recent_crosswords.dynamic %}
             {% comment %} make a persistent mapping from each post's crossword-id to a panel image {% endcomment %}
             {% assign handle = post.crossword-id | default: "001" %}
             {% assign img-index = handle | split: " " | last | split: "," | last | to_integer | modulo:9 %}
@@ -56,7 +56,7 @@ layout: default
           {% assign static-posts = site.posts | where: "type", 'static' %}
 
           <div class="o-grid-row">
-          {% for post in static-posts limit:12 %}
+          {% for post in static-posts limit:site.num_recent_crosswords.static %}
             <div data-o-grid-colspan="12 S12 M6 L4">
               <a class="crossword-link" href="{{ post.url | relative_url }}">
                   <div class="crossword-info">
