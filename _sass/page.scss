@@ -47,6 +47,31 @@ h1.page-heading {
     }
 }
 
+.o-banner {
+    position: relative;
+    bottom: auto;
+    margin-bottom: 20px;
+
+    .o-banner__inner {
+        .o-banner__content--long {
+            padding-left: 35%;
+
+            &:before {
+                content: '';
+                background: #fff1e5 url('../assets/imgs/chessboard.png') no-repeat;
+                background-size: cover;
+                background-position: center;
+                width: 30%;
+                display: block;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+}
+
 @include media-query($on-palm) {
     .crossword-list-container {
         margin-top: 15px;
@@ -67,5 +92,13 @@ h1.page-heading {
     .page-subheading {
         font-size: 16px;
         line-height: 18px;
+    }
+
+    .o-banner {
+        .o-banner__inner {
+            &:before {
+                display: none;
+            }
+        }
     }
 }
