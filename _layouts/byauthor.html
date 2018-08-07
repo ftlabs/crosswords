@@ -39,7 +39,7 @@ layout: default
           </a>
           <div class="o-grid-container no-padding">
             <div class="o-grid-row">
-            {% for post in dynamic-posts limit:9 %}
+            {% for post in dynamic-posts %}
               {% comment %} make a persistent mapping from each post's crossword-id to a panel image {% endcomment %}
               {% assign handle = post.crossword-id | default: "001" %}
               {% assign img-index = handle | split: " " | last | split: "," | last | to_integer | modulo:9 %}
