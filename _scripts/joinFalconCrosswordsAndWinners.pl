@@ -6,7 +6,7 @@
 use strict;
 
 # pull latest content from live site
-my $source_crosswords_url = "https://www.ft.com/crossword";
+my $source_crosswords_url = "https://www.ft.com/content/57ae2498-1adf-11e7-a266-12672483791a";
 my $crossword_html = `wget -O- $source_crosswords_url | grep "Latest Puzzles"`;
 my @crossword_lines = split(/<li>/, $crossword_html);
 die "ERROR: no crossword_lines" if scalar(@crossword_lines) == 0;
