@@ -14,7 +14,7 @@ layout: default
     </div>
   </div>
 
-{% assign dynamic-posts = site.posts | where: "type", 'dynamic' | where_exp:"item", "item.author != 'Warning Experimental'"  %}
+{% assign dynamic-posts = site.posts | where: "type", 'dynamic' | where_exp:"item", "item.author != 'Warning Experimental'" | where_exp:"item", "item.unindexed != true" %}
 {% assign dynamic-posts-grouped = dynamic-posts | group_by: 'author' | sort: 'name' %}
 <div class="crossword-list-container page-inner-container">
   <h2>Crossword Authors</h2>
