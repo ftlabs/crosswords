@@ -43,7 +43,7 @@ layout: default
         <h2 class="o-teaser-collection__heading">Interactive Crosswords</h2>
 
         <div class="o-grid-container no-padding">
-          {% assign dynamic-posts = site.posts | where: "type", 'dynamic' %}
+          {% assign dynamic-posts = site.posts | where: "type", 'dynamic' | where_exp:"item", "item.unindexed != true" %}
 
           <div class="o-grid-row">
           {% for post in dynamic-posts limit:site.num_recent_crosswords.dynamic %}
