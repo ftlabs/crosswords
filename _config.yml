@@ -34,7 +34,7 @@ google_analytics: UA-72191230-3
 o_crossword_version: ^1.8.4 # updated to ensure we don't have the old version cached anywhere
 markdown: kramdown
 theme: minima
-gems:
+plugins:
 #  - jekyll-feed
 exclude:
   - Gemfile
