@@ -5,7 +5,7 @@
 }
 
 .page-title {
-    background-color: $dark-background;    
+    background-color: $dark-background;
     color: $light-font-colour;
     text-align: center;
     padding: 120px 0;
@@ -51,25 +51,6 @@ h1.page-heading {
     position: relative;
     bottom: auto;
     margin-bottom: 20px;
-
-    .o-banner__inner {
-        .o-banner__content--long {
-            padding-left: 35%;
-
-            &:before {
-                content: '';
-                background: #fff1e5 url('../assets/imgs/chessbridge.png') no-repeat;
-                background-size: cover;
-                background-position: center;
-                width: 30%;
-                display: block;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        }
-    }
 }
 
 @include media-query($on-palm) {
@@ -80,7 +61,7 @@ h1.page-heading {
     .page-title {
         padding: 60px 0;
     }
-    
+
     h1.page-heading {
         margin: 0;
         font-family: $serif-font;
