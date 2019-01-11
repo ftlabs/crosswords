@@ -10,7 +10,7 @@ There are some rough edges but, hopefully, there is enough here of interest to e
 
 N.B. we are particularly keen to hear how these crosswords behave on smartphones.
 
-<h2>Announcement</h2>
+<h3>Announcement</h3>
 <p>2019/01/09: After a year and more of manually (and irregularly) echoing the static crosswords
 from <a href="https://www.ft.com/crossword">www.ft.com/crossword</a> as interactive crosswords in this site,
 there will be a pause while we sort out a more permanent solution.
